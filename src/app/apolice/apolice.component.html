@@ -1,0 +1,38 @@
+<div style="margin: 3rem">
+  <div>
+    <input
+      style="width: 40%; margin: 2px; border: 1px solid"
+      [style.border-color]="segurado.nome ? 'black' : 'red'"
+      [(ngModel)]="segurado.nome"
+      placeholder="Nome do segurado"
+    />
+    <select
+      style="margin: 2px; border: 1px solid"
+      [style.border-color]="segurado.sexo ? 'black' : 'red'"
+      [(ngModel)]="segurado.sexo"
+    >
+      <option value="" selected disabled>Sexo</option>
+      <option value="H">Homem</option>
+      <option value="M">Mulher</option>
+    </select>
+  </div>
+  <input
+    style="width: 40%; display: block; margin: 2px; border: 1px solid"
+    [style.border-color]="segurado.idade ? 'black' : 'red'"
+    [(ngModel)]="segurado.idade"
+    placeholder="Idade"
+    type="number"
+  />
+  <input
+    style="width: 40%; display: block; margin: 2px; border: 1px solid"
+    [style.border-color]="segurado.valorAutomovel ? 'black' : 'red'"
+    [(ngModel)]="segurado.valorAutomovel"
+    placeholder="Valor do automóvel (Ex: 21000)"
+    type="number"
+  />
+  <button (click)="calcularApolice()">Calcular Apólice</button>
+  <div *ngIf="valorApolice">
+    Valor da Apólice: R$ {{ valorApolice | number : "1.2-2" }}
+  </div>
+  <div *ngIf="erro">{{ erro }}</div>
+</div>
